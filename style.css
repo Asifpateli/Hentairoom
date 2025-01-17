@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playwrite DE Grund", cursive;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    /* border: 1px solid red; */
+    height: 100vh;
+}
+
+.form-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    /* border: 1px solid rgb(60, 0, 255); */
+    background-color: black;
+    background-image: url("./635963.jpg");
+    background-repeat:space;
+    background-size: contain;
+    background-position: center;
+}
+
+.form-data input {
+    border: 2px solid #dedddd5b;
+    width: 33%;
+    height: 35px;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    font-size: 10px;
+    background-color: #ffffffe4;
+    color: black;
+    font-weight: bolder;
+}
+
+.form-data button {
+    padding: 14px 10px;
+    border-radius: 8px;
+    border: none;
+    color: #c2bb30;
+    font-size: 14px;
+    background-color: #efff0a;
+    text-transform: uppercase;
+    font-family: "Protest Strike", sans-serif;
+    font-weight: lighter;
+    font-style: normal;
+    margin-left: -20px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid rgb(25, 0, 255); */
+    width: 100%;
+    height: 100%;
+}
+
+.show-box {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* border: 2px solid rgb(0, 255, 21); */
+    width: 40%;
+    padding-inline: 20px;
+}
+
+.img-adult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img-adult img{
+    width: 45%;
+    height: auto;
+}
+
+.card1 {
+    padding: 5px;
+    margin-top: 20px;
+    width: 100%;
+    height: 270px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.img-box {
+    position: relative;
+    width: 30%;
+    height: auto;
+    overflow: hidden;
+    /* To prevent overflow when scaling */
+}
+
+.img-box img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s ease, top 1s ease, left 1s ease;
+    position: absolute;
+}
+
+.detail-box {
+    font-size: 11px;
+    margin: 10px;
+}
+
+.s-result {
+    font-size: 14px;
+}
+
+.close-btn {
+    width: 100%;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.card-box {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid rgb(166, 0, 255); */
+    width: 60%;
+    padding: 20px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    /* border: 2px solid rgb(7, 7, 7); */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #ffffff;
+}
+
+.card-back {
+    background-color: #000000;
+    transform: rotateY(180deg);
+    color: #ffffff;
+    font-size: 10px;
+    padding: 20px;
+}
+
+.card-front img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-box {
+    display: flex;
+    gap: 20px;
+}
+
+
+.note-box {
+    /* border: 2px solid rgb(255, 77, 0); */
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #000000;
+    /* border: 2px solid rgb(255, 0, 0); */
+}
+
+.leBounceZoomIn h4 {
+    font-size: 8px;
+    width: 30%;
+}
+
+
+.note {
+    font-size: 10px;
+    margin: 20px;
+    font-weight: bold;
+    color: #FF3B00;
+}
+
+.note span {
+    font-size: 9px;
+    font-weight: normal;
+    background-color: #F4F4F4;
+    color: #000000;
+    padding-inline: 5px;
+}
+
+
+.views {
+    display: flex;
+    padding: 20px;
+    font-size: 10px;
+    width: 80%;
+    text-align: center;
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    /* border: 2px solid rgb(166, 0, 255); */
+    animation: myAnim4 2s ease 0s 1 normal forwards;
+}
+
+#viewCount {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding-inline-start: 3px;
+    letter-spacing: 1px;
+}
+
+@keyframes myAnim4 {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 1;
+        transform: translateX(-48px);
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    40% {
+        animation-timing-function: ease-in;
+        transform: translateX(-26px);
+    }
+
+    65% {
+        animation-timing-function: ease-in;
+        transform: translateX(-13px);
+    }
+
+    82% {
+        animation-timing-function: ease-in;
+        transform: translateX(-6.5px);
+    }
+
+    93% {
+        animation-timing-function: ease-in;
+        transform: translateX(-4px);
+    }
+
+    25%,
+    55%,
+    75%,
+    87%,
+    98% {
+        animation-timing-function: ease-out;
+        transform: translateX(0px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        width: 100%;
+        height: auto;
+    }
+
+    .form-data {
+        height: 150px;
+        width: 100%;
+    }
+
+    .form-data input {
+        width: 180px;
+        height: 30px;
+    }
+
+    .form-data button {
+        padding: 10px 10px;
+        font-size: 12px;
+        margin-left: -10px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .show-box {
+        width: 100%;
+    }
+
+    .card-box {
+        width: 100%;
+    }
+
+    .img-adult {
+        width: 100%;
+        height: 200px;
+    }
+
+    .img-adult img {
+        width: 100px
+    }
+
+    .card1 {
+        width: 100%;
+        height: 190px;
+        gap: 5px;
+
+    }
+
+    .img-box {
+        position: relative;
+        width: 40%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .img-box img {
+        width: auto;
+        height: 200px;
+        transition: transform 1s ease, top 1s ease, left 1s ease;
+        position: absolute;
+    }
+
+    .detail-box {
+        font-size: 8px;
+        margin: 10px;
+    }
+
+    .card {
+        width: 150px;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+
+    .card-box {
+        width: 100%;
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .card-front img {
+        width: 90%;
+        height: auto;
+    }
+
+}

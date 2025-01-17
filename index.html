@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hentai room</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Protest+Strike&display=swap"
+        rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.5.2/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.5.2/firebase-firestore-compat.min.js"></script>
+    
+<script type="text/javascript" src="https://vdbaa.com/pup.php?section=General&pt=2&pub=738892&ga=g"></script>
+<script type="text/javascript" src="https://udbaa.com/slider.php?section=General&pub=738892&ga=g&side=random"></script>
+    
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .adult-img-hidden {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <!-- Search Form -->
+            <form id="searchForm" class="form-data">
+                <input type="text" id="searchCode" placeholder="Search by Code" class="search-input" required>
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+
+            <div class="card-container">
+                <!-- Result Card -->
+                <div class="show-box">
+                    <div id="resultCard" class="hidden">
+                        <h2 class="s-result">Search Result</h2>
+                        <p id="resultContent"></p>
+                        <button id="closeButton" class="close-btn">Close</button>
+                    </div>
+
+                    <div class="img-adult" id="img-adult">
+                        <img src="./adult.png" alt="logo">
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <!-- Random data cards will be injected here -->
+
+                    <div class="note-box">
+                        <p class="note">Note :
+                            <span>If Link is not working, don't worry. You have a video title, so just
+                                search on Google so
+                                you get a video.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer leBounceZoomIn">
+                <h1 class="views">Total Views : <span id="viewCount">000</span></h1>
+
+                <h4>@spidy.amit_</h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+    
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
+        import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfdMTHy9fbXxjscWTOBHEgrSzu9qQ7adU",
+            authDomain: "hentairoom-e3851.firebaseapp.com",
+            projectId: "hentairoom-e3851",
+            storageBucket: "hentairoom-e3851.firebasestorage.app",
+            messagingSenderId: "292041624195",
+            appId: "1:292041624195:web:e41e1a5b5f9baec41469b6"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const database = getDatabase(app);
+
+        // Reference to the page views count in the database
+        const pageViewsRef = ref(database, 'pageViews');
+
+        // Function to update the view count
+        function updateViewCount() {
+            const sessionKey = sessionStorage.getItem('sessionKey');
+            if (!sessionKey) {
+                const newSessionKey = Date.now().toString();
+                sessionStorage.setItem('sessionKey', newSessionKey);
+
+                runTransaction(pageViewsRef, (currentViews) => {
+                    if (currentViews === null) return 1;
+                    return currentViews + 1;
+                }).then(() => {
+                    console.log('Page view added!');
+                }).catch((error) => {
+                    console.error('Error updating view count:', error);
+                });
+            }
+        }
+
+        // Function to display the view count
+        function displayViewCount(count) {
+            document.getElementById('viewCount').textContent = count || 0;
+        }
+
+        // Set up a listener for changes in the view count
+        onValue(pageViewsRef, (snapshot) => {
+            displayViewCount(snapshot.val());
+        }, (error) => {
+            console.error('Error reading view count:', error);
+        });
+
+        // Update the view count when the page loads
+        updateViewCount();
+
+        // Ensure the view is counted even if the page is about to unload
+        window.addEventListener('unload', () => {
+            sessionStorage.removeItem('sessionKey');
+        });
+    </script>
+
+</body>
+
+</html>
